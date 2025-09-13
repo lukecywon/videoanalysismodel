@@ -1,7 +1,7 @@
-%load_ext cudf.pandas
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+
 
 class RelevanceAnalyzer:
     def __init__(self):

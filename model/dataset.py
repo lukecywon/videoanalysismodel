@@ -1,3 +1,6 @@
+import pandas as pd
+
+
 class Dataset:
     comment_links = [
         "https://storage.googleapis.com/dataset_hosting/comments1.csv",
@@ -30,6 +33,7 @@ class Dataset:
     @staticmethod
     def getVideos():
         return pd.read_csv(Dataset.video_link)
+
 
 # Initialize dataset
 dataset = Dataset()
