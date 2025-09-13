@@ -19,12 +19,13 @@ from model.visualization import CommentAnalyticsDashboard
 
 load_dotenv()
 
-st.set_page_config(page_title="NoogAI Analysis", layout="wide")
+st.set_page_config(page_title="Dashboard", layout="wide", page_icon="📊")
 
 leftcol, mid, rightcol = st.columns([1, 1, 1])
 header_path = Path(__file__).resolve().parents[1] / "assets" / "header.png"
 mid.image(header_path)
 mid.header("NoogAI Video Comments Analysis")
+st.sidebar.success("Select a page above.")
 
 st.divider()
 
@@ -33,24 +34,21 @@ st.success("Welcome to the NoogAI YouTube Comments Analysis Dashboard! 🎉\nEnt
 if "YOUTUBE_API_KEY" in os.environ:
     API_KEY = os.getenv("YOUTUBE_API_KEY")
 else:
-    st.warning("YOUTUBE_API_KEY environment variable not set. Please set a valid API key to use this application.")
+    st.warning("YOUTUBE_API_KEY environment variable not set. Please set a valid API key to use this application.", )
     st.stop()
 
 with st.form("video_form"):
-    link = st.text_input("Enter YouTube Video Link:")
+    link = st.text_input("Enter YouTube Video Link:", placeholder="https://www.youtube.com/watch?v=example")
     submitted = st.form_submit_button("Analyze")
 
 if get_video_id(link) is None and submitted:
     st.error("Invalid YouTube Video URL. Please try again.")
     st.stop()
-elif get_video_id(link) is None and not submitted: # For default video - removed to cut down on API calls
-    # video_id = get_video_id(original_link)
+elif get_video_id(link) is None and not submitted:
     st.text("Awaiting YouTube Video URL input...")
     st.stop()
 else:
     video_id = get_video_id(link)
-
-st.subheader("Video Details")
 
 # Get video details
 video_url = f"https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&id={video_id}&key={API_KEY}"
@@ -63,7 +61,8 @@ video_details["Views"] = [video_response["items"][0]["statistics"].get("viewCoun
 video_details["Likes"] = [video_response["items"][0]["statistics"].get("likeCount", 0)]
 video_details["Comments"] = [video_response["items"][0]["statistics"].get("commentCount", 0)]
 
-st.subheader("Comments Data")
+st.header("Comments Data")
+st.divider()
 
 # Get comments (first 1000 comments - limit due to API constraints)
 comments = pd.DataFrame.from_dict(get_all_comments(video_id, API_KEY, limit=1000))
