@@ -21,6 +21,7 @@ load_dotenv()
 st.set_page_config(page_title="NoogAI Analysis", layout="wide")
 
 col1, col2, col3 = st.columns([1, 2, 1])
+col2.image("../assets/logo.jpeg", caption="Noog Squad Logo")
 col2.title("NoogAI Video Comments Analysis")
 
 if "YOUTUBE_API_KEY" in os.environ:
