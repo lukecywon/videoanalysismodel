@@ -4,16 +4,18 @@
 
 ![NoogAI Banner](assets/header.png)
 
+The dashboard can be viewed here: https://noogai.streamlit.app/
+
 ## 📋 Table of Contents
-- [Overview](#overview)
-- [Features](#features)
-- [Architecture](#architecture)
-- [Quick Start](#quick-start)
-- [Dashboard Usage](#dashboard-usage)
-- [Sample Dataset Analysis](#sample-dataset-analysis)
+- [Overview](#🎯-overview)
+- [Features](#✨-features)
+- [Architecture](#🏗️-architecture)
+- [Quick Start](#🏃-quick-start)
+- [Dashboard Usage](#📈-dashboard-usage)
+- [Sample Dataset Analysis](#🔬-sample-dataset-analysis)
 - [API Reference](#api-reference)
 - [Development](#development)
-- [Deployment](#deployment)
+- [Deployment](#🚀-deployment)
 - [Contributing](#contributing)
 
 ## 🎯 Overview
@@ -99,7 +101,7 @@ NoogAI/
 4. **Visualization**: Interactive dashboard creation
 5. **Export**: Results download and sharing
 
-## � Quick Start
+## 🏃 Quick Start
 
 ### Prerequisites
 - Python 3.8+
@@ -114,23 +116,15 @@ git clone https://github.com/lukecywon/videoanalysismodel.git
 cd videoanalysismodel
 ```
 
-1. **Install dependencies**
+2. **Install dependencies**
 ```bash
 pip install -r requirements.txt
 ```
 
-1. **Set up environment variables**
-Create a `.env` file in the root directory:
+3. **Set up environment variables**
+Edit the `.env` file in the root directory: (only needed for dashboard)
 ```env
 YOUTUBE_API_KEY="your_youtube_api_key_here"
-```
-
-1. **Download NLTK data** (automatic on first run)
-```python
-import nltk
-nltk.download('punkt')
-nltk.download('stopwords')
-nltk.download('punkt_tab')
 ```
 
 ### Running the Application
@@ -150,7 +144,11 @@ python main.py
 python examples.py
 ```
 
-## � Dashboard Usage
+#### Option 4: Jupyter Notebook
+Open `sample_analysis_model.ipynb` with Jupyter Notebook, Google Colab or VSCode.
+This option is for developers who wish to see exactly how the model runs.
+
+## 📈 Dashboard Usage
 
 ### Main Dashboard (`dashboard/dashboard.py`)
 
@@ -207,7 +205,7 @@ The platform includes comprehensive analysis of a beauty-focused dataset:
 - **Spam Characteristics**: Promotional content and generic praise identified
 - **Category Trends**: Skincare comments show highest quality scores
 
-## � API Reference
+## API Reference
 
 ### Core Classes
 
@@ -268,7 +266,7 @@ video_id = get_video_id("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
 comments = get_all_comments(video_id, api_key, limit=1000)
 ```
 
-## �️ Development
+## Development
 
 ### Project Structure
 - **Model Layer**: AI/ML components for analysis
@@ -306,7 +304,7 @@ mypy model/ dashboard/
 
 ## 🚀 Deployment
 
-### Streamlit Cloud Deployment
+### Streamlit Cloud Deployment (for members of Noog Troupers)
 
 1. **Push to GitHub**
 ```bash
@@ -369,17 +367,17 @@ CMD ["streamlit", "run", "dashboard/dashboard.py", "--server.port=8501", "--serv
 - **Data Sources**: Support for other platforms
 - **Performance**: Optimization improvements
 
-## � License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🏆 Acknowledgments
 
 ### Team: Noog Troupers
-- **AI/ML Development**: Advanced comment analysis pipeline
-- **Web Development**: Interactive dashboard creation
-- **Data Science**: Beauty industry insights and analytics
-- **UX/UI Design**: User-friendly interface design
+- **lukecywon** - Team Leader and Lead Developer
+- **ANARCHY2319** - Pitch Deck and Presentation
+- **freshflick** - Pitch Deck and Presentation
+- **aaronpersonalithink-star** - Pitch Deck and Presentation
 
 ### Technologies
 - **Hugging Face Transformers**: Sentiment analysis models
@@ -398,8 +396,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 For questions, issues, or contributions:
 - **GitHub Issues**: Report bugs and request features
-- **Documentation**: Comprehensive guides and examples
-- **Community**: Join our developer community
 
 **Built with ❤️ by the Noog Troupers team**
 
