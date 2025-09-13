@@ -1,11 +1,13 @@
 import streamlit as st
 import pandas as pd
+from pathlib import Path
 import requests
 import os
 import sys
-from dashboard.helper import get_video_id, get_all_comments
+dashboard_dir = Path(__file__).parent
+sys.path.insert(0, str(dashboard_dir))
+from helper import get_video_id, get_all_comments
 from dotenv import load_dotenv
-from pathlib import Path
 import asyncio
 
 # Add the parent directory to the path to import model modules
