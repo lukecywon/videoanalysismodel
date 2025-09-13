@@ -12,3 +12,6 @@ seaborn
 plotly
 scikit-learn
 streamlit
+aiopandas
+googletrans
+langdetect
