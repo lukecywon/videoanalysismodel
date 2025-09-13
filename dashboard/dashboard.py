@@ -3,7 +3,7 @@ import pandas as pd
 import requests
 import os
 import sys
-from helper import get_video_id, get_all_comments
+from dashboard.helper import get_video_id, get_all_comments
 from dotenv import load_dotenv
 from pathlib import Path
 import asyncio
