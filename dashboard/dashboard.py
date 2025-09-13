@@ -5,6 +5,7 @@ import os
 import sys
 from helper import get_video_id, get_all_comments
 from dotenv import load_dotenv
+from pathlib import Path
 import asyncio
 
 # Add the parent directory to the path to import model modules
@@ -20,9 +21,16 @@ load_dotenv()
 
 st.set_page_config(page_title="NoogAI Analysis", layout="wide")
 
+header_path = Path(__file__).resolve().parents[1] / "assets" / "header.png"
+st.image(header_path, use_container_width=True)
+
 col1, col2, col3 = st.columns([1, 2, 1])
-col2.image("../assets/logo.jpeg", caption="Noog Squad Logo")
+logo_path = Path(__file__).resolve().parents[1] / "assets" / "logo.jpeg"
+col1.image(logo_path, caption="Noog Squad Logo")
 col2.title("NoogAI Video Comments Analysis")
+col2.divider()
+col2.text("Analyze YouTube comments with AI to surface sentiment, relevance and quality. Example KPIs: Quality 42%, Spam 6%, Avg relevance 0.18")
+col2.text("Enter a YouTube link to generate visual charts (sentiment, category, relevance) and sample top comments.")
 
 if "YOUTUBE_API_KEY" in os.environ:
     API_KEY = os.getenv("YOUTUBE_API_KEY")
