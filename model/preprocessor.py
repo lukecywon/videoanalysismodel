@@ -11,9 +11,9 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # Optional imports for translation features (commented out by default)
-# from langdetect import detect
-# from googletrans import Translator
-# import asyncio
+from langdetect import detect
+from googletrans import Translator
+import asyncio
 
 # Download NLTK data
 nltk.download('punkt', quiet=True)
@@ -77,70 +77,62 @@ class AdvancedTextPreprocessor:
 
     async def translate_text(self, text):
         """Translate text to English"""
-        # Translation functionality disabled - requires googletrans and langdetect
-        # Uncomment imports and install packages to enable
-        return text
-        
-        # # Detect if text is English, if so no translation needed
-        # try:
-        #     if detect(text) == 'en':
-        #         return text
-        # except Exception as e:
-        #     return text
+        # Detect if text is English, if so no translation needed
+        try:
+            if detect(text) == 'en':
+                return text
+        except Exception as e:
+            return text
 
-        # # If the text is not English translate it to English
-        # async with Translator() as translator:
-        #   try:
-        #       translated_obj = await translator.translate(text, dest='en')
-        #       return translated_obj.text
-        #   except Exception as e:
-        #       print(f"Translation error: {e}")
-        #       return text
+        # If the text is not English translate it to English
+        async with Translator() as translator:
+          try:
+              translated_obj = await translator.translate(text, dest='en')
+              return translated_obj.text
+          except Exception as e:
+              print(f"Translation error: {e}")
+              return text
 
     async def batch_translate_text(self, texts, batch_size=100):
         """Translate a list of texts to English in batches"""
-        # Translation functionality disabled - requires googletrans and langdetect
-        # Uncomment imports and install packages to enable
-        return texts
-        
-        # translated_texts = []
-        # async with Translator() as translator:
-        #     for i in range(0, len(texts), batch_size):
-        #         batch = texts[i:i + batch_size]
-        #         try:
-        #             # Filter out empty strings or non-string types before translating
-        #             valid_batch = [text for text in batch if isinstance(text, str) and text.strip()]
-        #             if not valid_batch:
-        #                 translated_texts.extend([""] * len(batch)) # Maintain original list length
-        #                 continue
+        translated_texts = []
+        async with Translator() as translator:
+            for i in range(0, len(texts), batch_size):
+                batch = texts[i:i + batch_size]
+                try:
+                    # Filter out empty strings or non-string types before translating
+                    valid_batch = [text for text in batch if isinstance(text, str) and text.strip()]
+                    if not valid_batch:
+                        translated_texts.extend([""] * len(batch)) # Maintain original list length
+                        continue
 
-        #             # Detect language for the first item as a proxy
-        #             lang = 'en'
-        #             try:
-        #                 lang = detect(valid_batch[0])
-        #             except:
-        #                 pass # Assume English if detection fails
+                    # Detect language for the first item as a proxy
+                    lang = 'en'
+                    try:
+                        lang = detect(valid_batch[0])
+                    except:
+                        pass # Assume English if detection fails
 
-        #             if lang == 'en':
-        #                 translated_texts.extend(batch)
-        #             else:
-        #                 translated_batch_objs = await translator.translate(valid_batch, dest='en')
-        #                 # Ensure translated texts align with the original batch, handling empty inputs
-        #                 translated_results = []
-        #                 valid_batch_idx = 0
-        #                 for original_text in batch:
-        #                     if isinstance(original_text, str) and original_text.strip():
-        #                         translated_results.append(translated_batch_objs[valid_batch_idx].text)
-        #                         valid_batch_idx += 1
-        #                     else:
-        #                         translated_results.append("") # Append empty string for invalid inputs
-        #                 translated_texts.extend(translated_results)
+                    if lang == 'en':
+                        translated_texts.extend(batch)
+                    else:
+                        translated_batch_objs = await translator.translate(valid_batch, dest='en')
+                        # Ensure translated texts align with the original batch, handling empty inputs
+                        translated_results = []
+                        valid_batch_idx = 0
+                        for original_text in batch:
+                            if isinstance(original_text, str) and original_text.strip():
+                                translated_results.append(translated_batch_objs[valid_batch_idx].text)
+                                valid_batch_idx += 1
+                            else:
+                                translated_results.append("") # Append empty string for invalid inputs
+                        translated_texts.extend(translated_results)
 
-        #         except Exception as e:
-        #             print(f"Batch translation error (batch {i//batch_size + 1}): {e}")
-        #             translated_texts.extend(batch) # Append original texts in case of error
+                except Exception as e:
+                    print(f"Batch translation error (batch {i//batch_size + 1}): {e}")
+                    translated_texts.extend(batch) # Append original texts in case of error
 
-        # return translated_texts
+        return translated_texts
 
     def detect_spam(self, text):
         """Detect spam comments with improved logic"""
