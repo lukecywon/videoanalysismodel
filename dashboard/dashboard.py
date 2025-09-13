@@ -25,11 +25,14 @@ leftcol, mid, rightcol = st.columns([1, 1, 1])
 header_path = Path(__file__).resolve().parents[1] / "assets" / "header.png"
 mid.image(header_path)
 mid.header("NoogAI Video Comments Analysis")
-st.sidebar.success("Select a page above.")
+st.sidebar.text("NoogAI Comments Analysis")
+st.sidebar.success("View Sample Dataset Analysis for Demo Data.")
 
 st.divider()
 
-st.success("Welcome to the NoogAI YouTube Comments Analysis Dashboard! 🎉\nEnter a YouTube link to get started.")
+st.success("Welcome to the NoogAI YouTube Comments Analysis Dashboard! 🎉")
+st.success("Enter a YouTube link to get started.")
+st.success("Or use the Sample Dataset Analysis page for demo data.")
 
 if "YOUTUBE_API_KEY" in os.environ:
     API_KEY = os.getenv("YOUTUBE_API_KEY")
