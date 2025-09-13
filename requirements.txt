@@ -11,3 +11,4 @@ ipywidgets
 seaborn
 plotly
 scikit-learn
+streamlit
