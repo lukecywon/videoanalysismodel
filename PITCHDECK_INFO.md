@@ -61,6 +61,7 @@ Tools used:
 - Given more time and GPU power it is possible to cut down on time
 - Limitations for this project include:
   - GPU Power / Time: Google Colab has a 4 hr limit on GPU time for the free tier, which is insufficient for running significant operations on large datasets. Additionally GPU access is limited to the T4 GPU which may be insufficient for quicker opperations
+  - Youtube API calls - Daily 10000 quota, 1 api call per 100 comments. If a video has 1000 comments it will take 10 API calls. Scaling up if a video has 1000000 comments it will take 10000 API calls, resulting in the daily quota being exaused on a single high performing video (thankfully only very few videos have above 1 mil comments notably the Rick Roll video at over 2 mil).
 
 **Overcoming Limitations**
 - A big thing that can be overcome given time and budget is the speed of processing, as that is solely limited by GPU power and availability as well as the method in which a dataset is fed to the model.
