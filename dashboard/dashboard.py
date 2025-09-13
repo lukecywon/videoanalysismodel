@@ -2,6 +2,10 @@ import streamlit as st
 import pandas as pd
 import requests
 from urllib.parse import urlparse, parse_qs
+import os
+from dotenv import load_dotenv 
+load_dotenv()
+
 
 # Extract video ID
 def get_video_id(youtube_url):
@@ -17,17 +21,23 @@ st.set_page_config(page_title="NoogAI Analysis", layout="wide")
 st.title("Dashboard Prototype")
 
 # Your API key
-API_KEY = "AIzaSyBaVA8hhfF_ZxLk_DFErHRJj5gdMARx3oc"
-
-link = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+if "YOUTUBE_API_KEY" in os.environ:
+    API_KEY = os.getenv("YOUTUBE_API_KEY")
+else:
+    st.warning("YOUTUBE_API_KEY environment variable not set. Please set a valid API key to use this application.")
+    st.stop()
 
 with st.form("video_form"):
     link = st.text_input("Enter YouTube Video Link:")
     submitted = st.form_submit_button("Analyze")
 
-if get_video_id(link) is None:
-    st.error("Invalid YouTube URL")
+original_link = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+
+if get_video_id(link) is None and submitted:
+    st.error("Invalid YouTube Video URL. Please try again.")
     st.stop()
+elif get_video_id(link) is None and not submitted:
+    video_id = get_video_id(original_link)
 else:
     video_id = get_video_id(link)
 
