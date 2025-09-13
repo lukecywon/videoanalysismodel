@@ -38,6 +38,7 @@ By: **Noog Troupers**
 
 ## ✨ Features
 
+![](assets/dashbord_home.png)
 ### 🔍 Core Analysis Capabilities
 - **Advanced Text Preprocessing**: Cleaning, tokenization, stemming with beauty-specific vocabulary
 - **Sentiment Analysis**: State-of-the-art transformer models (cardiffnlp/twitter-roberta-base-sentiment-latest)
@@ -46,8 +47,9 @@ By: **Noog Troupers**
 - **Beauty Category Classification**: Specialized classification for skincare, makeup, fragrance, and general content
 - **Relevance Analysis**: TF-IDF vectorization with cosine similarity scoring
 
-### 📊 Interactive Dashboards
-- **Real-time Analysis**: Live YouTube video comment analysis
+![](assets/dashboard.png)
+### 📊 Interactive Dashboard
+- **Video-by-video Analysis**: Analyse comments from a Youtube link
 - **Visual Analytics**: Interactive charts and graphs using Plotly
 - **KPI Tracking**: Comprehensive metrics dashboard
 - **Export Functionality**: CSV download for further analysis
