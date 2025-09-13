@@ -15,3 +15,7 @@ streamlit
 aiopandas
 googletrans
 langdetect
+python-dotenv
+
+--extra-index-url https://pypi.nvidia.com
+cudf-cu12
