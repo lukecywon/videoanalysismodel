@@ -21,16 +21,14 @@ load_dotenv()
 
 st.set_page_config(page_title="NoogAI Analysis", layout="wide")
 
+leftcol, mid, rightcol = st.columns([1, 1, 1])
 header_path = Path(__file__).resolve().parents[1] / "assets" / "header.png"
-st.image(header_path, use_container_width=True)
+mid.image(header_path)
+mid.header("NoogAI Video Comments Analysis")
 
-col1, col2, col3 = st.columns([1, 2, 1])
-logo_path = Path(__file__).resolve().parents[1] / "assets" / "logo.jpeg"
-col1.image(logo_path, caption="Noog Squad Logo")
-col2.title("NoogAI Video Comments Analysis")
-col2.divider()
-col2.text("Analyze YouTube comments with AI to surface sentiment, relevance and quality. Example KPIs: Quality 42%, Spam 6%, Avg relevance 0.18")
-col2.text("Enter a YouTube link to generate visual charts (sentiment, category, relevance) and sample top comments.")
+st.divider()
+
+st.success("Welcome to the NoogAI YouTube Comments Analysis Dashboard! 🎉\nEnter a YouTube link to get started.")
 
 if "YOUTUBE_API_KEY" in os.environ:
     API_KEY = os.getenv("YOUTUBE_API_KEY")
