@@ -1,6 +1,8 @@
 from urllib.parse import urlparse, parse_qs
 import requests
+import streamlit as st
 
+@st.cache_data
 def get_video_id(youtube_url):
     parsed_url = urlparse(youtube_url)
     if parsed_url.hostname == "youtu.be":
@@ -10,6 +12,7 @@ def get_video_id(youtube_url):
             return parse_qs(parsed_url.query)["v"][0]
     return None
 
+@st.cache_data
 def get_all_comments(video_id, api_key, limit=None):
     """Fetch top-level comments for a video.
 
