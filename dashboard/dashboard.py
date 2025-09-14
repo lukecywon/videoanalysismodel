@@ -69,8 +69,8 @@ video_details["Comments"] = [video_response["items"][0]["statistics"].get("comme
 st.header("Comments Data")
 st.divider()
 
-# Get comments (first 1000 comments - limit due to API constraints)
-comments = pd.DataFrame.from_dict(get_all_comments(video_id, API_KEY, limit=1000))
+# Get comments (first 10000 comments - limit due to API constraints)
+comments = pd.DataFrame.from_dict(get_all_comments(video_id, API_KEY, limit=10000))
 
 # Basic Cleaning
 st.write(f"Fetched {len(comments)} comments initially...")
