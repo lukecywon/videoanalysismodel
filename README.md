@@ -4,8 +4,6 @@
 
 ![NoogAI Banner](assets/header.png)
 
-The dashboard can be viewed here: https://noogai.streamlit.app/
-
 ## 📋 Table of Contents
 - [Overview](#🎯-overview)
 - [Features](#✨-features)
@@ -33,6 +31,19 @@ NoogAI provides comprehensive AI-powered analysis including:
 - **Category Classification**: Beauty-specific categorization (skincare, makeup, fragrance)
 - **Relevance Scoring**: TF-IDF cosine similarity analysis
 - **Interactive Dashboards**: Real-time visualization and insights
+
+
+### Important Links
+**The dashboard can be viewed here: https://noogai.streamlit.app/**
+
+**The output CSVs can be downloaded here:**
+- [comment1_analysis_results.csv](https://storage.googleapis.com/dataset_hosting/results/comment1_analysis_results.csv)
+- [video_analytics_summary.csv](https://storage.googleapis.com/dataset_hosting/results/video_analytics_summary.csv)
+
+_These can also be downloaded from the dashboard_
+
+### Data Pipeline
+![](assets/datapipeline.png)
 
 By: **Noog Troupers**
 
@@ -386,6 +397,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Streamlit**: Web application framework
 - **Plotly**: Interactive visualization library
 - **YouTube Data API**: Comment data access
+- **cardiffnlp/twitter-roberta-base-sentiment-latest**: Pretrained Model used for sentiment analysis
 
 ### Special Thanks
 - L'Oréal Datathon organizers
